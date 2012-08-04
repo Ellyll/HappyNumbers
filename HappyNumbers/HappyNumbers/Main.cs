@@ -38,7 +38,7 @@ namespace HappyNumbers
 		{
 			int num = result.NumberTried;
 
-			int happyness = 0;
+			int happiness = 0;
 
 			// Check if we know about this number already
 			if (result.HappyNumbers.Contains(num))
@@ -71,10 +71,10 @@ namespace HappyNumbers
 
 			foreach(int digit in digits)
 			{
-				happyness += digit*digit;
+				happiness += digit*digit;
 			}
 
-			if (happyness == 1)
+			if (happiness == 1)
 			{
 				result.HappyNumbers.Add(num);
 				result.IsHappy = true;
@@ -89,7 +89,7 @@ namespace HappyNumbers
 			}
 
 			result.TriesLeft--;
-			result.NumberTried = happyness;
+			result.NumberTried = happiness;
 
 			return GetHappyResults(result);
 		}
