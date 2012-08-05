@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyNumbers", "HappyNumbers\HappyNumbers.csproj", "{AC44E477-DE54-4776-A180-29DB05EB5660}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyNumbers.Tests", "HappyNumbers.Tests\HappyNumbers.Tests.csproj", "{FA1DBDA8-AB27-4D08-BA54-43D362381BC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{AC44E477-DE54-4776-A180-29DB05EB5660}.Debug|x86.Build.0 = Debug|x86
 		{AC44E477-DE54-4776-A180-29DB05EB5660}.Release|x86.ActiveCfg = Release|x86
 		{AC44E477-DE54-4776-A180-29DB05EB5660}.Release|x86.Build.0 = Release|x86
+		{FA1DBDA8-AB27-4D08-BA54-43D362381BC0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FA1DBDA8-AB27-4D08-BA54-43D362381BC0}.Debug|x86.Build.0 = Debug|Any CPU
+		{FA1DBDA8-AB27-4D08-BA54-43D362381BC0}.Release|x86.ActiveCfg = Release|Any CPU
+		{FA1DBDA8-AB27-4D08-BA54-43D362381BC0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = HappyNumbers\HappyNumbers.csproj
