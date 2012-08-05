@@ -8,90 +8,24 @@ namespace HappyNumbers
 	{
 		public static void Main(string[] args)
 		{
-			SortedSet<int> happyNumbers = new SortedSet<int>();
-			SortedSet<int> unhappyNumbers = new SortedSet<int>();
+			var happy = new HappyCalculator();
 
-			for (int x = 1 ; x <= 500 ; x++)
+			Console.WriteLine("Calculating up to 500");
+			happy.CalculateForRange(1, 500);
+			Console.WriteLine("Finished!");
+
+			Console.WriteLine("Happy numbers are:");
+			bool first = true;
+			foreach(int i in happy.GetCalculatedHappyNumbers())
 			{
-				HappyResults result = new HappyResults { HappyNumbers = happyNumbers,
-					                                     UnhappyNumbers = unhappyNumbers,
-														 NumberTried = x };
-				result = GetHappyResults(result);
-				happyNumbers.UnionWith(result.HappyNumbers);
-				unhappyNumbers.UnionWith(result.UnhappyNumbers);
+				if (first)
+					first = false;
+				else
+					Console.Write(", ");
 
-				if (result.IsHappy)
-				{
-					if ( x > 1 )
-					{
-						Console.Write(", ");
-					}
-					Console.Write(x.ToString());
-				}
+				Console.Write(i.ToString());
 			}
 			Console.WriteLine();
-
-			Console.WriteLine("Finished!");
-		}
-
-		public static HappyResults GetHappyResults(HappyResults result)
-		{
-			int num = result.NumberTried;
-
-			int happiness = 0;
-
-			// Check if we know about this number already
-			if (result.HappyNumbers.Contains(num))
-			{
-				result.IsHappy = true;
-				return result;
-			}
-			if (result.UnhappyNumbers.Contains(num))
-			{
-				result.IsHappy = false;
-				return result;
-			}
-			if (result.NumbersTried.Contains(num)) // already tried so must be unhappy
-			{
-				result.UnhappyNumbers.Add(num);
-				result.IsHappy = false;
-				return result;
-			}
-
-			result.NumbersTried.Add(num);
-			string stringNum = num.ToString();
-
-			// split the digits up
-			List<int> digits = new List<int>();
-			for (int i=0; i < stringNum.Length; i++)
-			{
-				string s = stringNum.Substring(i, 1);
-				digits.Add(Int32.Parse(s));
-			}
-
-			foreach(int digit in digits)
-			{
-				happiness += digit*digit;
-			}
-
-			if (happiness == 1)
-			{
-				result.HappyNumbers.Add(num);
-				result.IsHappy = true;
-				return result;
-			}
-			if (result.TriesLeft == 0)
-			{
-				Console.WriteLine("Out of tries for " + result.NumberTried.ToString() + " assuming unhappy");
-				result.UnhappyNumbers.Add(num);
-				result.IsHappy = false;
-			    return result;
-			}
-
-			result.TriesLeft--;
-			result.NumberTried = happiness;
-
-			return GetHappyResults(result);
 		}
 	}
 }
